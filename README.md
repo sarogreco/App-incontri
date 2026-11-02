@@ -21,6 +21,7 @@ Il concept completo è in [`docs/concept.md`](docs/concept.md).
 ## Stato del progetto
 
 - [x] Repository creato
+- [x] Context7 configurato (documentazione aggiornata delle librerie)
 - [ ] Scelta del nome
 - [ ] Decisioni sul flusso (vedi `docs/concept.md`)
 - [ ] Progetto Xcode
