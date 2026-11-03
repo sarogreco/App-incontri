@@ -22,6 +22,7 @@ Il concept completo è in [`docs/concept.md`](docs/concept.md).
 
 - [x] Repository creato
 - [x] Context7 configurato (documentazione aggiornata delle librerie)
+- [x] Spec Kit installato (metodo spec-driven: costituzione → specifica → piano → compiti → codice)
 - [ ] Scelta del nome
 - [ ] Decisioni sul flusso (vedi `docs/concept.md`)
 - [ ] Progetto Xcode
