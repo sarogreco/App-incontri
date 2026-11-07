@@ -26,7 +26,7 @@ Il concept completo è in [`docs/concept.md`](docs/concept.md).
 - [x] CLAUDE.md con istruzioni per Claude (chat e Xcode)
 - [ ] Scelta del nome
 - [ ] Decisioni sul flusso (vedi `docs/concept.md`)
-- [ ] Progetto Xcode
+- [x] Progetto Xcode (parte nel simulatore)
 - [ ] Prototipo delle schermate
 - [ ] Backend Firebase
 - [ ] Alpha su TestFlight

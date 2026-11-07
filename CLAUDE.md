@@ -54,13 +54,26 @@ Non dare per scontata una scelta finché non è scritta qui o in `docs/concept.m
 | Interfaccia | SwiftUI |
 | Linguaggio | Swift |
 | Xcode | 27.2 |
-| iOS minimo | 18.0 |
+| iOS minimo | 18.6 |
 | Orientamento | solo verticale (Portrait) |
 | Bundle Identifier | `com.sarogreco.AppIncontri` |
 | Nome del target | `MyApp` (nome interno; il nome visibile è `AppIncontri`) |
 | Backend (previsto) | Firebase: Auth, Firestore, Storage, Cloud Functions, notifiche push |
 
-Il progetto Xcode `AppIncontri.xcodeproj` è nella cartella del repository.
+Struttura delle cartelle:
+
+```
+AppIncontri/
+├── AppIncontri.xcodeproj/   progetto Xcode (nuovo formato JSON `project.xcproj`)
+└── MyApp/                   codice dell'app (target MyApp)
+    ├── MyApp.swift          punto di ingresso (@main)
+    ├── ContentView.swift
+    └── Assets.xcassets
+```
+
+La cartella `MyApp/` è collegata al target come **cartella sincronizzata**: ogni file `.swift`
+aggiunto lì dentro (anche in sottocartelle) entra automaticamente nell'app, senza modificare il
+file di progetto. Non modificare `project.xcproj` a mano se non serve.
 
 ## Come lavoriamo
 
