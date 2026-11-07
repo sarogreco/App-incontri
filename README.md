@@ -25,7 +25,7 @@ Il concept completo è in [`docs/concept.md`](docs/concept.md).
 - [x] Spec Kit installato (metodo spec-driven: costituzione → specifica → piano → compiti → codice)
 - [x] CLAUDE.md con istruzioni per Claude (chat e Xcode)
 - [ ] Scelta del nome
-- [ ] Decisioni sul flusso (vedi `docs/concept.md`)
+- [x] Decisioni sul flusso e costituzione (`.specify/memory/constitution.md`)
 - [x] Progetto Xcode (parte nel simulatore)
 - [ ] Prototipo delle schermate
 - [ ] Backend Firebase

@@ -18,10 +18,10 @@ incontro reale entro 15 minuti.
 | 1 | Chi invia | Scatta un selfie dal vivo e scrive un messaggio |
 | 2 | Chi invia | Preme Invia: nasce una **richiesta** |
 | 3 | App | Notifica tutti gli utenti nel raggio (default 1 km) |
-| 4 | Chi riceve | Vede selfie, messaggio e distanza approssimativa |
+| 4 | Chi riceve | Vede selfie, messaggio e che la persona è "nei dintorni" |
 | 5 | Chi riceve | Se vuole, risponde con selfie dal vivo + messaggio |
 | 6 | Chi invia | Scorre le risposte con swipe destra/sinistra |
-| 7 | App | Alla scelta, comunica il punto d'incontro alla persona scelta |
+| 7 | App | Alla scelta, mostra alla persona scelta la posizione da cui è partita la richiesta |
 | 8 | Entrambi | Si incontrano entro ~15 minuti |
 
 ## Regole di base
@@ -31,13 +31,22 @@ incontro reale entro 15 minuti.
 - Ogni utente può **segnalare** e **bloccare** un altro utente.
 - Le richieste **scadono** dopo un tempo prestabilito.
 
+## Filosofia
+
+> *"Uno sconosciuto è un amico non ancora incontrato."*
+
+## Decisioni prese
+
+1. **Punto d'incontro**: la posizione esatta da cui è stata inviata la richiesta, mostrata solo
+   alla persona scelta. Le note d'uso invitano a regole di buon senso.
+2. **Durata di una richiesta**: 30 minuti.
+3. **Cosa vede chi riceve**: solo che qualcuno è "nei dintorni".
+
+Le regole complete sono nella costituzione: `.specify/memory/constitution.md`.
+
 ## Decisioni aperte
 
-1. **Punto d'incontro**: posizione esatta di chi invia, oppure luogo pubblico
-   suggerito dall'app (bar, piazza) vicino a chi invia? *(consigliato: luogo pubblico)*
-2. **Durata di una richiesta** prima della scadenza (es. 30 minuti).
-3. **Cosa vede chi riceve**: solo la distanza ("a 600 m") o anche il quartiere.
-4. **Nome dell'app.**
+1. **Nome dell'app.**
 
 ## Sicurezza (da definire nel dettaglio)
 

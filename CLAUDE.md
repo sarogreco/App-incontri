@@ -32,19 +32,25 @@ Valgono per ogni funzione. Non vanno aggirate nemmeno "per test".
 - **Solo maggiorenni (18+).**
 - **Solo foto scattate al momento** con la fotocamera dentro l'app.
   Non usare mai `PhotosPicker`, `UIImagePickerController` con `.photoLibrary` o altri accessi alla galleria.
-- **Posizione mai precisa prima del match**: chi riceve una richiesta vede solo una distanza approssimativa.
+- **Posizione mai mostrata prima del match**: chi riceve una richiesta sa solo che qualcuno è "nei dintorni".
 - Ogni utente può **segnalare** e **bloccare** un altro utente.
 - Le richieste **scadono** dopo un tempo prestabilito.
 - Nessun segreto nel codice: chiavi e file come `GoogleService-Info.plist` non vanno nel repository
   (sono già in `.gitignore`).
 
+### Decisioni prese
+
+La fonte ufficiale è la costituzione: [`.specify/memory/constitution.md`](.specify/memory/constitution.md).
+
+- Filosofia: *"Uno sconosciuto è un amico non ancora incontrato."*
+- **Chi riceve** una richiesta sa solo che qualcuno è **"nei dintorni"**: niente distanza né quartiere.
+- **Punto d'incontro**: la posizione esatta da cui è stata inviata la richiesta (istantanea, non
+  tracciamento), mostrata **solo** alla persona scelta dopo lo swipe a destra.
+- Una richiesta **dura 30 minuti**, poi scade con risposte, selfie e posizione.
+- **Note d'uso** con regole di buon senso mostrate al primo avvio.
+
 ### Decisioni ancora aperte
 
-Non dare per scontata una scelta finché non è scritta qui o in `docs/concept.md`:
-
-- Punto d'incontro: posizione esatta di chi invia o luogo pubblico suggerito dall'app (consigliato: luogo pubblico).
-- Durata di una richiesta prima della scadenza.
-- Cosa vede chi riceve: solo la distanza o anche il quartiere.
 - Nome dell'app.
 
 ## Struttura tecnica

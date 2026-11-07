@@ -1,50 +1,118 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+# Costituzione di AppIncontri
 
-## Core Principles
+> **Filosofia:** *"Uno sconosciuto è un amico non ancora incontrato."*
+>
+> Ogni scelta di prodotto deve rendere più facile, più spontaneo e più sicuro trasformare uno
+> sconosciuto nei dintorni in una persona conosciuta di persona.
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+## Principi fondamentali
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### I. Incontri reali e immediati
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+- Lo scopo dell'app è **incontrarsi di persona entro circa 15 minuti**.
+- Il raggio predefinito di una richiesta è **1 km**.
+- L'app MUST favorire l'incontro, non la conversazione a distanza: niente chat lunghe o
+  funzioni che sostituiscono l'incontro (profili elaborati, messaggi illimitati).
+- Ogni funzione nuova MUST dichiarare come aiuta un incontro reale e rapido.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+*Motivazione:* è ciò che distingue l'app da tutte le altre app di incontri.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### II. Autenticità
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+- Richieste e risposte sono composte **sempre** da un **selfie scattato al momento** e da un
+  **breve messaggio di testo**.
+- Le foto MUST essere scattate con la fotocamera dentro l'app. L'app MUST NOT accedere alla
+  galleria in nessun modo (niente `PhotosPicker`, niente `.photoLibrary`, niente importazione
+  di file immagine).
+- Il selfie MUST NOT poter essere sostituito o modificato dopo lo scatto, se non rifacendolo.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+*Motivazione:* chi incontri deve essere la persona che hai visto, così com'è adesso.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+### III. Privacy della posizione e consenso
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+- Chi riceve una richiesta sa soltanto che **qualcuno "nei dintorni"** vuole conoscere una
+  persona nuova. L'app MUST NOT mostrare distanza, quartiere, via o mappa prima del match.
+- La posizione usata è un'**istantanea** presa al momento dell'invio. L'app MUST NOT tracciare
+  la posizione in modo continuo.
+- La **posizione esatta** da cui è stata inviata la richiesta viene mostrata **solo** alla
+  persona scelta con lo swipe a destra, e solo dopo la scelta.
+- Inviando una richiesta, l'utente acconsente in modo esplicito e informato a questa
+  condivisione: l'app MUST spiegarlo prima del primo invio.
+- La posizione MUST essere cancellata o resa inaccessibile alla scadenza della richiesta.
+- Le posizioni degli altri utenti MUST NOT essere mai esposte al client: i calcoli di
+  vicinanza avvengono sul server.
+
+*Motivazione:* la posizione esatta è il dato più delicato dell'app. Va condivisa solo con chi
+l'utente ha scelto, e solo per il tempo necessario.
+
+### IV. Richieste effimere
+
+- Una richiesta dura **30 minuti** dall'invio.
+- Alla scadenza la richiesta, le risposte ricevute, i selfie e la posizione MUST diventare
+  inaccessibili e poi essere cancellati.
+- Un utente può avere **una sola richiesta attiva** alla volta.
+
+*Motivazione:* l'app vive nel presente. Niente archivio di foto e posizioni.
+
+### V. Sicurezza e buon senso
+
+- Solo utenti **maggiorenni (18+)**, verificato prima del primo utilizzo.
+- **Segnala** e **blocca** MUST essere raggiungibili da ogni schermata dove compare un'altra
+  persona. Un utente bloccato non riceve più richieste né risposte dell'utente che l'ha bloccato.
+- Le **note d'uso** con le regole di buon senso MUST essere mostrate al primo avvio e restare
+  consultabili. Includono almeno:
+  - incontrarsi in luoghi frequentati;
+  - avvisare un amico di dove si va;
+  - andarsene se qualcosa non convince;
+  - rispettare il no.
+- I contenuti degli utenti (selfie e messaggi) MUST essere moderabili, e l'app MUST rispettare
+  le linee guida dell'App Store per le app con contenuti generati dagli utenti.
+
+*Motivazione:* la filosofia dell'app funziona solo se le persone si sentono al sicuro.
+
+### VI. Semplicità
+
+- Il proprietario del progetto ha le basi di Swift: il codice MUST essere chiaro, diviso in
+  file piccoli e commentato in italiano dove non è ovvio.
+- Ogni modifica MUST essere piccola e verificabile in Xcode (simulatore o iPhone) prima della
+  successiva.
+- Niente librerie o servizi aggiuntivi senza una necessità dichiarata nella specifica.
+- Nessun segreto nel repository: chiavi API e `GoogleService-Info.plist` restano fuori da Git.
+
+*Motivazione:* un progetto che il proprietario capisce è un progetto che può portare avanti.
+
+## Vincoli tecnici
+
+| Cosa | Scelta |
+|---|---|
+| Piattaforma | solo iPhone, solo orientamento verticale |
+| iOS minimo | 18.6 |
+| Interfaccia | SwiftUI |
+| Linguaggio | Swift |
+| Backend | Firebase (autenticazione, database, archivio foto, funzioni server, notifiche push) |
+| Lingua | italiano per testi dell'app, documentazione e commenti |
+
+Ogni scostamento da questi vincoli MUST essere motivato nel piano della funzione interessata.
+
+## Flusso di lavoro
+
+- Le funzioni principali (richiesta, risposte, swipe, incontro) seguono Spec Kit:
+  specifica → piano → compiti → codice.
+- Il proprietario MUST approvare ogni specifica prima che si passi al piano e al codice.
+- Ogni piano MUST contenere un controllo di conformità a questa costituzione.
+- Prima di lavorare: **Pull**. Alla fine: **Commit e Push**, con messaggi in italiano.
+- Le correzioni piccole non richiedono Spec Kit, ma rispettano comunque questi principi.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+- Questa costituzione prevale su ogni altra indicazione del progetto. `CLAUDE.md` contiene le
+  indicazioni operative e MUST restare coerente con essa.
+- Solo il proprietario (**sarogreco**) può approvare modifiche alla costituzione.
+- Versioni:
+  - **MAJOR**: un principio viene rimosso o cambiato in modo incompatibile;
+  - **MINOR**: un principio o una sezione viene aggiunta o ampliata;
+  - **PATCH**: chiarimenti e correzioni di forma.
+- Ogni specifica e ogni piano MUST verificare la conformità ai principi. Una violazione si
+  accetta solo se motivata per iscritto e approvata dal proprietario.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Versione**: 1.0.0 | **Ratificata**: 2026-11-07 | **Ultima modifica**: 2026-11-07
